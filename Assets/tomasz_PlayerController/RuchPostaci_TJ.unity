@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 488297460}
   - component: {fileID: 488297459}
   - component: {fileID: 488297458}
+  - component: {fileID: 488297461}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -206,6 +207,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &488297461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488297457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f328b0e01ed0d094098e37c551cd2f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1185444100}
+  speed: 5
 --- !u!1 &518175100
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1185444102}
   - component: {fileID: 1185444101}
+  - component: {fileID: 1185444103}
   m_Layer: 0
   m_Name: Player_TJ
   m_TagString: Untagged
@@ -370,3 +386,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1185444103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185444100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a29d777136a0f94eb489f98fc08cf50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedx: 5
+  speedy: 3
