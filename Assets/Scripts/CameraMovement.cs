@@ -16,7 +16,9 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         float playerx = player.transform.position.x;
+        float playery = player.transform.position.y;
         float camerax = this.transform.position.x;
-        this.gameObject.transform.position += new Vector3((playerx-camerax)*speed*Time.deltaTime,0);
+        float cameray = this.transform.position.y;
+        this.gameObject.transform.position += new Vector3((playerx-camerax)*speed*Time.deltaTime, (playery - cameray) * speed * Time.deltaTime);
     }
 }
