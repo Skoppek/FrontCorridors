@@ -23,7 +23,6 @@ public class PlayerController_tj : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-
         cp = GameObject.Find("CameraPoint");
     }
 
@@ -33,7 +32,6 @@ public class PlayerController_tj : MonoBehaviour
     {
         //rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
         bool success = MovePlayer(moveInput);
-        
         if (!success)
         {
             success = MovePlayer(new Vector2(moveInput.x, 0));
@@ -74,7 +72,6 @@ public class PlayerController_tj : MonoBehaviour
     public bool MovePlayer(Vector2 direction)
     {
         if (Math.Abs(cp.transform.localPosition.x)<2) cp.transform.localPosition += (increaseValues * direction.x )  * Time.fixedDeltaTime*2;
-
         int count = rb.Cast(
             direction,
             movementFilter,
@@ -84,8 +81,9 @@ public class PlayerController_tj : MonoBehaviour
         {
             Vector2 moveVector = direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveVector);
-            
-            
+
+            if (direction.y>0) this.transform.localScale -= new Vector3(0.1f, 0.1f);
+            if(direction.y<0) this.transform.localScale += new Vector3(0.1f, 0.1f);
 
             if (lastMoveInput != direction)
             {
