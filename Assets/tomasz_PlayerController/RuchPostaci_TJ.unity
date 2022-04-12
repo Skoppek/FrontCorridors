@@ -238,7 +238,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   smoothFactor: 2.9
   minValues: {x: -20, y: 0.1, z: -10}
-  maxValues: {x: 18.5, y: 1.6, z: -10}
+  maxValues: {x: 18, y: 1.6, z: -10}
 --- !u!1 &518175100
 GameObject:
   m_ObjectHideFlags: 0
