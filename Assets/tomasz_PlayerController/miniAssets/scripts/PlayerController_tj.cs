@@ -9,8 +9,8 @@ public class PlayerController_tj : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
 
-
-    private Vector2 moveInput;
+    private GameObject cp;
+    private Vector2 moveInput,lastMoveInput;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -21,7 +21,11 @@ public class PlayerController_tj : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        cp = GameObject.Find("CameraPoint").GetComponent<GameObject>();
     }
+
+
 
     void FixedUpdate()
     {
@@ -38,26 +42,36 @@ public class PlayerController_tj : MonoBehaviour
         }
     }
 
-    void FacingSide(Vector2 dir)
+    void FacingSide(bool turned)
     {
-        if(dir.x >= 0.0f)
+        if(turned)
         {
-            sr.flipX = false;
+            sr.flipX = true;
         }
         else
         {
-            sr.flipX = true;
+            sr.flipX = false;
         }
     }
 
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        FacingSide(moveInput);
+
+       
+    }
+
+    void CameraPointAjustment(Vector3 dir)
+    {
+
     }
 
     public bool MovePlayer(Vector2 direction)
     {
+        
+        
+
+        
         
         int count = rb.Cast(
             direction,
@@ -69,7 +83,24 @@ public class PlayerController_tj : MonoBehaviour
             Vector2 moveVector = direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveVector);
             
+            
+
+            if (lastMoveInput != direction)
+            {
+                //print("lmi = "+lastMoveInput.x);
+                //print("dir = "+direction.x);
+                switch (direction.x)
+                {
+                    case 1:
+                        FacingSide(false);
+                        break;
+                    case -1:
+                        FacingSide(true);
+                        break;
+                }
+            }
             return true;
+
         }
         else
         {
