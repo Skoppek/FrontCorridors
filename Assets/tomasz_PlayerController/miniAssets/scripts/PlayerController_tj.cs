@@ -82,8 +82,10 @@ public class PlayerController_tj : MonoBehaviour
             Vector2 moveVector = direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveVector);
 
-            if (direction.y>0) this.transform.localScale -= new Vector3(0.1f, 0.1f);
-            if(direction.y<0) this.transform.localScale += new Vector3(0.1f, 0.1f);
+            // Zmiana rozmiarów gracza w zale¿noœci od odleg³oœci od kamery
+            //
+            // if (direction.y>0) this.transform.localScale -= new Vector3(0.1f, 0.1f);
+            // if(direction.y<0) this.transform.localScale += new Vector3(0.1f, 0.1f);
 
             if (lastMoveInput != direction)
             {
