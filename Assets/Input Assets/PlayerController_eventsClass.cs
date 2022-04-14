@@ -11,14 +11,19 @@ public class PlayerController_eventsClass : MonoBehaviour
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public Vector3 increaseValues = new Vector3(3f, 0, 0);
+    public float cp_position_gain;
+    public float cp_position_speed;
+
+
     
+
 
     private GameObject cp;
     private Vector2 moveInput, lastMoveInput;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-
+    private Vector3 minValues, maxValues;
 
 
 
@@ -63,6 +68,9 @@ public class PlayerController_eventsClass : MonoBehaviour
 
     private void FixedUpdate()
     {
+        minValues = cm.gameObject.GetComponent<CameraFollow>().minValues;
+        maxValues = cm.gameObject.GetComponent<CameraFollow>().maxValues;
+
         moveInput = move.ReadValue<Vector2>();
         if (moveInput.x == 0)
         {
@@ -87,7 +95,16 @@ public class PlayerController_eventsClass : MonoBehaviour
 
     public bool MovePlayer(Vector2 direction)
     {
-        if (Math.Abs(cp.transform.localPosition.x) < 4) cp.transform.localPosition += (increaseValues * direction.x) * Time.fixedDeltaTime * 2;
+        if (
+            Math.Abs(cp.transform.localPosition.x) < cp_position_gain
+            && cp.transform.position.x < maxValues.x
+           
+            && cp.transform.position.x > minValues.x
+            
+            ) cp.transform.localPosition += (increaseValues * direction.x) * Time.fixedDeltaTime * cp_position_speed;
+        
+        
+        
         int count = rb.Cast(
             direction,
             movementFilter,
