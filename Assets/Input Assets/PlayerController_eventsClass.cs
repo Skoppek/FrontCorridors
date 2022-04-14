@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController_eventsClass : MonoBehaviour
 {
-
+    public Camera cm;
+    public bool freeze = false;
     public float moveSpeed = 1.0f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public Vector3 increaseValues = new Vector3(3f, 0, 0);
-
+    
 
     private GameObject cp;
     private Vector2 moveInput, lastMoveInput;

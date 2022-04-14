@@ -24,8 +24,8 @@ public class door_trigger : MonoBehaviour
 
     IEnumerator movePlayer(Collider2D player)
     {
-        Camera cm = player.GetComponent<PlayerController_tj>().cm;
-        player.GetComponent<PlayerController_tj>().freeze = true;
+        Camera cm = player.GetComponent<PlayerController_eventsClass>().cm;
+        player.GetComponent<PlayerController_eventsClass>().freeze = true;
         cm.gameObject.GetComponentInChildren<DimmerControl>().targetAlpha = 1;
         yield return new WaitForSecondsRealtime(0.1f);
         float temp = cm.GetComponent<CameraFollow>().smoothFactor;
@@ -34,7 +34,7 @@ public class door_trigger : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         cm.GetComponent<CameraFollow>().smoothFactor = temp;
         cm.gameObject.GetComponentInChildren<DimmerControl>().targetAlpha = 0;
-        player.GetComponent<PlayerController_tj>().freeze = false;
+        player.GetComponent<PlayerController_eventsClass>().freeze = false;
     }
 
     void OnTriggerExit2D(Collider2D col)
