@@ -3,20 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class PlayerController_tj : MonoBehaviour
+public class PlayerController_eventsClass : MonoBehaviour
 {
+
     public float moveSpeed = 1.0f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public Vector3 increaseValues = new Vector3(3f, 0, 0);
 
+
     private GameObject cp;
-    private Vector2 moveInput,lastMoveInput;
+    private Vector2 moveInput, lastMoveInput;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
+
+
+
+    private EventInputAction eventInputAction;
+    private InputAction move;
+
+
+
+
+    private void Awake()
+    {
+        eventInputAction = new EventInputAction();
+    }
 
 
     private void Start()
@@ -26,12 +40,36 @@ public class PlayerController_tj : MonoBehaviour
         cp = GameObject.Find("CameraPoint");
     }
 
-
-
-    void FixedUpdate()
+    private void OnEnable()
     {
-        //rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        move = eventInputAction.Player.Move;
+        move.Enable();
+
+        eventInputAction.Player.Use.performed += DoUse;
+        eventInputAction.Player.Use.Enable();
+    }
+
+    private void DoUse(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Used!");
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+        eventInputAction.Player.Use.Disable();
+    }
+
+    private void FixedUpdate()
+    {
+        moveInput = move.ReadValue<Vector2>();
+        if (moveInput.x == 0)
+        {
+            cp.transform.localPosition = new Vector3(0, 1, 0);
+        }
+        //Debug.Log("Movement Values " + move.ReadValue<Vector2>());
         bool success = MovePlayer(moveInput);
+
         if (!success)
         {
             success = MovePlayer(new Vector2(moveInput.x, 0));
@@ -40,38 +78,15 @@ public class PlayerController_tj : MonoBehaviour
                 success = MovePlayer(new Vector2(moveInput.y, 0));
             }
         }
-    }
 
-    void FacingSide(bool turned)
-    {
-        if(turned)
-        {
-            sr.flipX = true;
-        }
-        else
-        {
-            sr.flipX = false;
-        }
-    }
-
-    void OnMove(InputValue value)
-    {
-        moveInput = value.Get<Vector2>();
-        if (moveInput.x == 0)
-        {
-            cp.transform.localPosition = new Vector3(0,1,0);
-        }
-       
-    }
-
-    void CameraPointAjustment(Vector3 dir)
-    {
 
     }
+
+
 
     public bool MovePlayer(Vector2 direction)
     {
-        if (Math.Abs(cp.transform.localPosition.x)<4) cp.transform.localPosition += (increaseValues * direction.x )  * Time.fixedDeltaTime*2;
+        if (Math.Abs(cp.transform.localPosition.x) < 4) cp.transform.localPosition += (increaseValues * direction.x) * Time.fixedDeltaTime * 2;
         int count = rb.Cast(
             direction,
             movementFilter,
@@ -91,10 +106,11 @@ public class PlayerController_tj : MonoBehaviour
             {
                 //print("lmi = "+lastMoveInput.x);
                 //print("dir = "+direction.x);
-                if (direction.x > 0) {
+                if (direction.x > 0)
+                {
                     FacingSide(false);
                 }
-                else 
+                else
                 {
                     FacingSide(true);
                 }
@@ -104,7 +120,7 @@ public class PlayerController_tj : MonoBehaviour
         }
         else
         {
-            foreach (RaycastHit2D hit in castCollisions) 
+            foreach (RaycastHit2D hit in castCollisions)
             {
                 //print(hit.ToString());
             }
@@ -112,5 +128,19 @@ public class PlayerController_tj : MonoBehaviour
         }
     }
 
-}
 
+
+    void FacingSide(bool turned)
+    {
+        if (turned)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
+    }
+
+
+}
