@@ -72,5 +72,6 @@ public class door_trigger : MonoBehaviour
     {
         Destroy(marker);
         Debug.Log("odejscie od drzwi " + Time.time);
+        active = false;
     }
 }
