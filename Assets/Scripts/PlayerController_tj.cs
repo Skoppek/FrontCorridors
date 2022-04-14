@@ -91,14 +91,12 @@ public class PlayerController_tj : MonoBehaviour
             {
                 //print("lmi = "+lastMoveInput.x);
                 //print("dir = "+direction.x);
-                switch (direction.x)
+                if (direction.x > 0) {
+                    FacingSide(false);
+                }
+                else 
                 {
-                    case 1:
-                        FacingSide(false);
-                        break;
-                    case -1:
-                        FacingSide(true);
-                        break;
+                    FacingSide(true);
                 }
             }
             return true;
