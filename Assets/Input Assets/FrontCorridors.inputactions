@@ -35,7 +35,7 @@
                 {
                     "name": "Use",
                     "type": "Button",
-                    "id": "20253e4f-e9c1-48a7-83fa-674d1298dec9",
+                    "id": "474d05ac-80dc-4b8a-87fd-4a806ae927aa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -265,11 +265,11 @@
                 },
                 {
                     "name": "",
-                    "id": "776306d4-0e07-4511-971d-236a263be35f",
+                    "id": "4af64e8f-a3d7-4186-9cf2-8288b34a98ca",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "",
                     "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
