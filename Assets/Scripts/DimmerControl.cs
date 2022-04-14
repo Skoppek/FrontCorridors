@@ -12,7 +12,7 @@ public class DimmerControl : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         change();
     }

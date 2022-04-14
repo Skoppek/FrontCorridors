@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public GameObject darkplane;
     public GameObject target;
     public Vector3 offset;
     [Range(1, 10)]
@@ -13,6 +14,8 @@ public class CameraFollow : MonoBehaviour
     {
         Follow();
     }
+
+
 
     void Follow()
     {
