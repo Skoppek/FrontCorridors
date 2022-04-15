@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController_tj : MonoBehaviour
 {
+    public Camera cm;
     public float moveSpeed = 1.0f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
@@ -17,6 +18,7 @@ public class PlayerController_tj : MonoBehaviour
     private SpriteRenderer sr;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
+    public bool freeze = false;
 
 
     private void Start()
@@ -25,9 +27,9 @@ public class PlayerController_tj : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         cp = GameObject.Find("CameraPoint");
+
+        cm = Camera.main;
     }
-
-
 
     void FixedUpdate()
     {
@@ -73,6 +75,9 @@ public class PlayerController_tj : MonoBehaviour
 
     public bool MovePlayer(Vector2 direction)
     {
+        if(freeze)
+            return false;
+
         if (Math.Abs(cp.transform.localPosition.x)<2) cp.transform.localPosition += (increaseValues * direction.x )  * Time.fixedDeltaTime*2;
 
         int count = rb.Cast(
@@ -85,8 +90,6 @@ public class PlayerController_tj : MonoBehaviour
             Vector2 moveVector = direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveVector);
             
-            
-
             if (lastMoveInput != direction)
             {
                 //print("lmi = "+lastMoveInput.x);
