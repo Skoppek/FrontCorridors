@@ -102,8 +102,8 @@ public class PlayerController_eventsClass : MonoBehaviour
             && cp.transform.position.x > minValues.x
             
             ) cp.transform.localPosition += (increaseValues * direction.x) * Time.fixedDeltaTime * cp_position_speed;
-        
-        
+
+        Debug.Log(cp.transform.position.x);
         
         int count = rb.Cast(
             direction,
