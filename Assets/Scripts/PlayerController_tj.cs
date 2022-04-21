@@ -25,9 +25,7 @@ public class PlayerController_tj : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-
         cp = GameObject.Find("CameraPoint");
-
         cm = Camera.main;
     }
 
