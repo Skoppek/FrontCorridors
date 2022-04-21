@@ -184,6 +184,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5722db1c913e9845a91c9a256f7cf54, type: 3}
+--- !u!1 &412410657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4642128587420160159, guid: 64c8af870a4b6994a840ec3b62546fb7, type: 3}
+  m_PrefabInstance: {fileID: 1859928799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &412410663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412410657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dedd2d3e1c0a3549bb54237de927277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cm: {fileID: 488297459}
+  freeze: 0
+  moveSpeed: 8
+  collisionOffset: 0.05
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  increaseValues: {x: 3, y: 0, z: 0}
+  cp_position_gain: 2
+  cp_position_speed: 2
 --- !u!1 &488297457
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darkplane: {fileID: 673710118}
-  target: {fileID: 2118849799}
+  target: {fileID: 412410657}
   offset: {x: 0, y: 0, z: -10}
   smoothFactor: 3
   minValues: {x: -16, y: 0.1, z: -10}
@@ -732,7 +770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162651430815949021, guid: 64c8af870a4b6994a840ec3b62546fb7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4162651430815949021, guid: 64c8af870a4b6994a840ec3b62546fb7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1226,11 +1264,6 @@ Transform:
   m_Father: {fileID: 870409700}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2118849799 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3039113352106611334, guid: 64c8af870a4b6994a840ec3b62546fb7, type: 3}
-  m_PrefabInstance: {fileID: 1859928799}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2145526502
 GameObject:
   m_ObjectHideFlags: 0
