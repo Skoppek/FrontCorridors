@@ -44,6 +44,51 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""selfHarmHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1affc5e-9384-4f1c-b75e-bc9a0b066850"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""selftHealHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c78d669-ecdd-448f-950c-4b3a2e6a2047"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""selftHarmSanity"",
+                    ""type"": ""Button"",
+                    ""id"": ""319b6c43-0f48-41c4-bcfb-eec96b9a2159"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""selftHealSanity"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ee655d3-d2db-44c4-a327-a0176c149dc1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DoT"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6500cfb-0652-4bd2-a538-efd1961e1e26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -156,6 +201,61 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a021904-b394-4fdd-a994-77e433c9c8be"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""selfHarmHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5de5d089-3f38-4355-931a-24a698686dfb"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""selftHealHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c88a3f9-f1b1-423f-b243-54d5757e9e50"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""selftHarmSanity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f30b91b9-fac2-4609-a7d1-c6e08b6ebf54"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""selftHealSanity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72ee6934-cc97-4cb9-baca-ae8e17c9b0e9"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DoT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -166,6 +266,11 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
+        m_Player_selfHarmHealth = m_Player.FindAction("selfHarmHealth", throwIfNotFound: true);
+        m_Player_selftHealHealth = m_Player.FindAction("selftHealHealth", throwIfNotFound: true);
+        m_Player_selftHarmSanity = m_Player.FindAction("selftHarmSanity", throwIfNotFound: true);
+        m_Player_selftHealSanity = m_Player.FindAction("selftHealSanity", throwIfNotFound: true);
+        m_Player_DoT = m_Player.FindAction("DoT", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,12 +332,22 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Use;
+    private readonly InputAction m_Player_selfHarmHealth;
+    private readonly InputAction m_Player_selftHealHealth;
+    private readonly InputAction m_Player_selftHarmSanity;
+    private readonly InputAction m_Player_selftHealSanity;
+    private readonly InputAction m_Player_DoT;
     public struct PlayerActions
     {
         private @EventInputAction m_Wrapper;
         public PlayerActions(@EventInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Use => m_Wrapper.m_Player_Use;
+        public InputAction @selfHarmHealth => m_Wrapper.m_Player_selfHarmHealth;
+        public InputAction @selftHealHealth => m_Wrapper.m_Player_selftHealHealth;
+        public InputAction @selftHarmSanity => m_Wrapper.m_Player_selftHarmSanity;
+        public InputAction @selftHealSanity => m_Wrapper.m_Player_selftHealSanity;
+        public InputAction @DoT => m_Wrapper.m_Player_DoT;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -248,6 +363,21 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
                 @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                 @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
                 @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
+                @selfHarmHealth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelfHarmHealth;
+                @selfHarmHealth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelfHarmHealth;
+                @selfHarmHealth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelfHarmHealth;
+                @selftHealHealth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHealHealth;
+                @selftHealHealth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHealHealth;
+                @selftHealHealth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHealHealth;
+                @selftHarmSanity.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHarmSanity;
+                @selftHarmSanity.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHarmSanity;
+                @selftHarmSanity.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHarmSanity;
+                @selftHealSanity.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHealSanity;
+                @selftHealSanity.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHealSanity;
+                @selftHealSanity.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelftHealSanity;
+                @DoT.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDoT;
+                @DoT.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDoT;
+                @DoT.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDoT;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -258,6 +388,21 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
                 @Use.started += instance.OnUse;
                 @Use.performed += instance.OnUse;
                 @Use.canceled += instance.OnUse;
+                @selfHarmHealth.started += instance.OnSelfHarmHealth;
+                @selfHarmHealth.performed += instance.OnSelfHarmHealth;
+                @selfHarmHealth.canceled += instance.OnSelfHarmHealth;
+                @selftHealHealth.started += instance.OnSelftHealHealth;
+                @selftHealHealth.performed += instance.OnSelftHealHealth;
+                @selftHealHealth.canceled += instance.OnSelftHealHealth;
+                @selftHarmSanity.started += instance.OnSelftHarmSanity;
+                @selftHarmSanity.performed += instance.OnSelftHarmSanity;
+                @selftHarmSanity.canceled += instance.OnSelftHarmSanity;
+                @selftHealSanity.started += instance.OnSelftHealSanity;
+                @selftHealSanity.performed += instance.OnSelftHealSanity;
+                @selftHealSanity.canceled += instance.OnSelftHealSanity;
+                @DoT.started += instance.OnDoT;
+                @DoT.performed += instance.OnDoT;
+                @DoT.canceled += instance.OnDoT;
             }
         }
     }
@@ -266,5 +411,10 @@ public partial class @EventInputAction : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
+        void OnSelfHarmHealth(InputAction.CallbackContext context);
+        void OnSelftHealHealth(InputAction.CallbackContext context);
+        void OnSelftHarmSanity(InputAction.CallbackContext context);
+        void OnSelftHealSanity(InputAction.CallbackContext context);
+        void OnDoT(InputAction.CallbackContext context);
     }
 }

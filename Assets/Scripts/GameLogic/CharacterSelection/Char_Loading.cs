@@ -9,6 +9,7 @@ public class Char_Loading : MonoBehaviour
     public Transform spawnPoint;
     public Transform Parent;
     public Camera cam;
+    
     void Awake()
     {
         int selectedCharacter = PlayerPrefs.GetInt("selectedCharacter");

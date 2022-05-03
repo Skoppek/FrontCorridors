@@ -10,7 +10,7 @@ public class Char_Selection : MonoBehaviour
     [HideInInspector]
     public int selected = 0;
 
-    public TMP_Text name;
+    public new TMP_Text name;
     public TMP_Text about;
     
 
